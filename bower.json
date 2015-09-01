@@ -1,0 +1,20 @@
+{
+  "name": "New_Application",
+  "version": "0.0.1",
+  "homepage": "https://github.com/edmundquintero/New_Application",
+  "authors": [
+    "Edmund Quintero"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-card": "PolymerElements/paper-card#~1.0.3",
+    "polymer": "Polymer/polymer#^1.0.0"
+  }
+}
