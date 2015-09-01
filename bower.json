@@ -14,6 +14,9 @@
     "tests"
   ],
   "dependencies": {
+    "byutv-jsonp": "~1.2.0",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.0.4",
+    "iron-jsonp-library": "PolymerElements/iron-jsonp-library#~1.0.3",
     "paper-card": "PolymerElements/paper-card#~1.0.3",
     "polymer": "Polymer/polymer#^1.0.0"
   }

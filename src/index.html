@@ -7,17 +7,29 @@
     <title>Resident Evil Wiki</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../bower_components/paper-card/paper-card.html">
+    <link rel="import" href="../bower_components/byutv-jsonp/byutv-jsonp.html">
+
     <!-- bower:css -->
     <!-- endbower -->
   </head>
-  <body>
+  <body unresolved>
 
   <!-- New application content here -->
 
   <!-- Remove lines below -->
     <h1>Application Boilerplate</h1>
     <p>Now, build something awesome.</p>
+
+    <byutv-jsonp
+    auto
+    url="http://www.giantbomb.com/api/game/3030-27715/?api_key=d2029bb22bd98ac08b54d148a4047617b22d3633&format=json"
+    params='{"alt":"json", "q":"chrome"}'
+    handle-as="json"
+    on-response="handleResponse"
+    debounce-duration="300"
+    response="{{data}}"
+    ></byutv-jsonp>
 
     <paper-card heading="Card Title">
       <div class="card-content">Some content</div>
@@ -29,8 +41,8 @@
 
 
     <!-- bower:js -->
-    <!-- endbower -->
     <script src='../bower_components/webcomponentsjs/webcomponents.js'></script>
     <script type='js/application' src='/dist/js/app.js'></script>
+    <!-- endbower -->
   </body>
 </html>
