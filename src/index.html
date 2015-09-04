@@ -7,42 +7,70 @@
     <title>Resident Evil Wiki</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="import" href="../bower_components/paper-card/paper-card.html">
-    <link rel="import" href="../bower_components/byutv-jsonp/byutv-jsonp.html">
-
+    <link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+    <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+    <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+    <link rel="import" href="polymer-elements/post-card/post-card.html">
+    <style>
+      body {
+        background: #efefef;
+      }
+      paper-header-panel {
+        height: 100%;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      paper-toolbar {
+        background: #03a9f4;
+        color: white;
+      }
+      #tabs {
+        width: 100%;
+        margin: 0;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-transform: uppercase;
+      }
+    </style>
     <!-- bower:css -->
     <!-- endbower -->
   </head>
-  <body unresolved>
+  <body unresolved ng-app='app' ng-controller='ServiceController'>
 
-  <!-- New application content here -->
+    <paper-header-panel class="flex">
+      <paper-toolbar>
+        <paper-tabs id="tabs" selected="all" self-end>
+          <paper-tab name="all">All</paper-tab>
+          <paper-tab name="favorites">Favorites</paper-tab>
+        </paper-tabs>
+      </paper-toolbar>
+    </paper-header-panel>
 
-  <!-- Remove lines below -->
-    <h1>Application Boilerplate</h1>
-    <p>Now, build something awesome.</p>
-
-    <byutv-jsonp
-    auto
-    url="http://www.giantbomb.com/api/game/3030-27715/?api_key=d2029bb22bd98ac08b54d148a4047617b22d3633&format=json"
-    params='{"alt":"json", "q":"chrome"}'
-    handle-as="json"
-    on-response="handleResponse"
-    debounce-duration="300"
-    response="{{data}}"
-    ></byutv-jsonp>
-
-    <paper-card heading="Card Title">
-      <div class="card-content">Some content</div>
-      <div class="card-actions">
-        <paper-button>Some action</paper-button>
-      </div>
-    </paper-card>
-  <!-- Remove lines above -->
+    <div class="container" layout vertical center>
+      <post-card>
+        <img width="70" height="70"
+          src="../images/avatar-07.svg">
+        <h2>Another Developer</h2>
+        <p>I'm composing with shadow DOM!</p>
+      </post-card>
+      <p>yo yo yo</p>
+    </div>
 
 
+    <script>
+      var tabs = document.querySelector('paper-tabs');
+
+      tabs.addEventListener('core-select', function() {
+        console.log("Selected: " + tabs.selected);
+      });
+    </script>
+    <script src='../bower_components/angular/angular.js'></script>
     <!-- bower:js -->
     <script src='../bower_components/webcomponentsjs/webcomponents.js'></script>
-    <script type='js/application' src='/dist/js/app.js'></script>
+    <script src='../bower_components/promise-polyfill/Promise.js'></script>
     <!-- endbower -->
+    <script src='../dist/js/app.js'></script>
   </body>
 </html>
