@@ -29,6 +29,11 @@
       .container {
          width: 50%;
       }
+      @media screen and (max-width: 700px) {
+        .container {
+          width: 90%;
+        }
+      }
       paper-header-panel {
         height: 100%;
         overflow: auto;
@@ -72,6 +77,7 @@
     </style>
 
     <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/prism/themes/prism.css" />
     <!-- endbower -->
   </head>
   <body unresolved ng-app='app' ng-controller='ServiceController'>
@@ -79,8 +85,8 @@
     <paper-header-panel class="flex">
       <paper-toolbar >
         <paper-tabs id="tabs" selected="all" self-end>
-          <paper-tab name="all">All</paper-tab>
-          <paper-tab name="favorites">Favorites</paper-tab>
+          <paper-tab name="Description">Description</paper-tab>
+          <paper-tab name="Characters">Characters</paper-tab>
         </paper-tabs>
       </paper-toolbar>
     </paper-header-panel>
@@ -107,6 +113,8 @@
     <!-- bower:js -->
     <script src='../bower_components/webcomponentsjs/webcomponents.js'></script>
     <script src='../bower_components/promise-polyfill/Promise.js'></script>
+    <script src='../bower_components/marked/lib/marked.js'></script>
+    <script src='../bower_components/prism/prism.js'></script>
     <!-- endbower -->
     <script src='../dist/js/app.js'></script>
   </body>
