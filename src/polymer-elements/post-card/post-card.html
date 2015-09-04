@@ -1,7 +1,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/paper-icon-button/paper-icon-button.html">
 
-<polymer-element name="post-card">
+<dom-module name="wiki-content">
   <template>
     <style>
       :host {
@@ -12,8 +12,6 @@
         width: 100%;
         font-size: 1.2rem;
         font-weight: 300;
-        width: 100%;
-        height: 500px;
       }
       .card-header {
         margin-bottom: 10px;
@@ -33,12 +31,14 @@
     </style>
 
     <div class="card-header" layout horizontal center>
-      <content select="img"></content>
       <content select="h2"></content>
     </div>
     <content></content>
   </template>
   <script>
-    Polymer({});
+    // register a new element called proto-element
+    Polymer({
+      is: "wiki-content"
+    });
   </script>
-</polymer-element>
+</dom-module>

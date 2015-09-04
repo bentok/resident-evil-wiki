@@ -7,13 +7,27 @@
     <title>Resident Evil Wiki</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
     <link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
     <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
     <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
-    <link rel="import" href="polymer-elements/post-card/post-card.html">
+    <link rel="import" href="../bower_components/paper-material/paper-material.html">
+    <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
     <style>
       body {
+        font-size: 14px;
         background: #efefef;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        padding: 1rem;
+      }
+      h2 {
+        padding-top: 1rem;
+      }
+      .container {
+         width: 50%;
       }
       paper-header-panel {
         height: 100%;
@@ -23,6 +37,16 @@
       paper-toolbar {
         background: #03a9f4;
         color: white;
+      }
+      paper-material {
+        background: #fff;
+      }
+      paper-material p, h1, h2, h3, h4, ul {
+        margin-left: 30px;
+        margin-right: 30px;
+      }
+      paper-material#description img {
+        max-width: 90%;
       }
       #tabs {
         width: 100%;
@@ -48,14 +72,13 @@
       </paper-toolbar>
     </paper-header-panel>
 
-    <div class="container" layout vertical center>
-      <post-card>
-        <img width="70" height="70"
-          src="../images/avatar-07.svg">
-        <h2>Another Developer</h2>
-        <p>I'm composing with shadow DOM!</p>
-      </post-card>
-      <p>yo yo yo</p>
+    <div class="container" layout end-justified center>
+      <paper-material elevation="2">
+        <h1>Resident Evil</h1>
+      </paper-material>
+      <paper-material elevation="1" id='description'>
+        <div ng-bind-html='data.description'></div>
+      </paper-material>
     </div>
 
 
@@ -67,6 +90,7 @@
       });
     </script>
     <script src='../bower_components/angular/angular.js'></script>
+    <script src='../bower_components/angular-sanitize/angular-sanitize.js'></script>
     <!-- bower:js -->
     <script src='../bower_components/webcomponentsjs/webcomponents.js'></script>
     <script src='../bower_components/promise-polyfill/Promise.js'></script>

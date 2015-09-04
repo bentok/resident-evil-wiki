@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('app', [])
+  .module('app', ['ngSanitize'])
   .controller('ServiceController', ['$scope', '$http', serviceController]);
 
 function serviceController(scope, http) {
