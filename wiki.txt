@@ -1,1 +1,0 @@
-url: http://www.giantbomb.com/api/game/3030-27715/?api_key=d2029bb22bd98ac08b54d148a4047617b22d3633&format=json
