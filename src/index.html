@@ -85,15 +85,18 @@
     <paper-header-panel class="flex">
       <paper-toolbar >
         <paper-tabs id="tabs" selected="all" self-end>
+          <paper-tab name="Overview">Overview</paper-tab>
           <paper-tab name="Description">Description</paper-tab>
           <paper-tab name="Characters">Characters</paper-tab>
+          <paper-tab name="Locations">Locations</paper-tab>
+          <paper-tab name="Items">Items</paper-tab>
         </paper-tabs>
       </paper-toolbar>
     </paper-header-panel>
 
     <div class="container" layout end-justified center>
       <paper-material elevation="2">
-        <h1>Resident Evil</h1>
+        <h1>{{data.name}}</h1>
       </paper-material>
       <paper-material elevation="1" id='description'>
         <div ng-bind-html='data.description'></div>
