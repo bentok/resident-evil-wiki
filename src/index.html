@@ -12,7 +12,8 @@
     <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
     <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
     <link rel="import" href="../bower_components/paper-material/paper-material.html">
-    <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../bower_components/paper-card/paper-card.html">
+    <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
     <style>
       body {
         font-size: 14px;
@@ -53,6 +54,10 @@
       paper-material#description img {
         max-width: 90%;
       }
+      paper-card {
+        width: 100%;
+        margin-bottom: 16px;
+      }
       #tabs {
         width: 100%;
         margin: 0;
@@ -81,36 +86,57 @@
     <!-- endbower -->
   </head>
   <body unresolved ng-app='app' ng-controller='ServiceController'>
+    <template is='dom-bind'>
+      <paper-header-panel class="flex">
+        <paper-toolbar >
+          <paper-tabs id="tabs" selected="{{selected}}" self-end>
+            <paper-tab name="Overview">Overview</paper-tab>
+            <paper-tab name="Description">Description</paper-tab>
+            <paper-tab name="Characters">Characters</paper-tab>
+            <paper-tab name="Locations">Locations</paper-tab>
+            <paper-tab name="Items">Items</paper-tab>
+          </paper-tabs>
+        </paper-toolbar>
+      </paper-header-panel>
 
-    <paper-header-panel class="flex">
-      <paper-toolbar >
-        <paper-tabs id="tabs" selected="all" self-end>
-          <paper-tab name="Overview">Overview</paper-tab>
-          <paper-tab name="Description">Description</paper-tab>
-          <paper-tab name="Characters">Characters</paper-tab>
-          <paper-tab name="Locations">Locations</paper-tab>
-          <paper-tab name="Items">Items</paper-tab>
-        </paper-tabs>
-      </paper-toolbar>
-    </paper-header-panel>
+      <div class="container" layout end-justified center>
+        <paper-material elevation="2">
+          <h1 ng-bind='data.name'></h1>
+        </paper-material>
+      </div>
 
-    <div class="container" layout end-justified center>
-      <paper-material elevation="2">
-        <h1>{{data.name}}</h1>
-      </paper-material>
-      <paper-material elevation="1" id='description'>
-        <div ng-bind-html='data.description'></div>
-      </paper-material>
-    </div>
-
+      <iron-pages selected="{{selected}}">
+        <div class="container" layout end-justified center>
+          <paper-card heading="Short Description">
+            <div class="card-content" ng-bind="data.deck"></div>
+          </paper-card>
+          <paper-card heading="Developer">
+            <div class="card-content" ng-bind="data.developers[0].name"></div>
+          </paper-card>
+          <paper-card heading="Platforms">
+            <ul>
+              <li ng-repeat="platform in data.platforms" class="card-content" ng-bind="platform.name"></li>
+            </ul>
+          </paper-card>
+        </div>
+        <div class="container" layout end-justified center>
+          <paper-material elevation="1" id='description'>
+            <div ng-bind-html='data.description'></div>
+          </paper-material>
+        </div>
+        <div>Page Three</div>
+        <div>Page Four</div>
+        <div>Page Five</div>
+      </iron-pages>
+    </template>
 
     <script>
-      var tabs = document.querySelector('paper-tabs');
-
-      tabs.addEventListener('core-select', function() {
-        console.log("Selected: " + tabs.selected);
+      document.addEventListener('WebComponentsReady', function () {
+        var template = document.querySelector('template[is="dom-bind"]');
+        template.selected = 0; // selected is an index by default
       });
     </script>
+
     <script src='../bower_components/angular/angular.js'></script>
     <script src='../bower_components/angular-sanitize/angular-sanitize.js'></script>
     <!-- bower:js -->
