@@ -14,6 +14,7 @@
     <link rel="import" href="../bower_components/paper-material/paper-material.html">
     <link rel="import" href="../bower_components/paper-card/paper-card.html">
     <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+    <link rel="import" href="../bower_components/byutv-jsonp/byutv-jsonp.html">
     <style>
       body {
         font-size: 14px;
@@ -71,13 +72,13 @@
 
     <style is="custom-style">
       paper-toolbar {
-        --paper-toolbar-background: #242628; /* Mixin defined in paper-toolbar.html */
+        --paper-toolbar-background: #f44336; /* Mixin defined in paper-toolbar.html */
       }
       paper-tabs {
-        --paper-tabs-selection-bar-color: #f44336;
+        --paper-tabs-selection-bar-color: #fff;
       }
       paper-tab {
-        --paper-tab-ink: #f44336;
+        --paper-tab-ink: #fff;
       }
     </style>
 
@@ -85,12 +86,11 @@
     <link rel="stylesheet" href="../bower_components/prism/themes/prism.css" />
     <!-- endbower -->
   </head>
-  <body unresolved ng-app='app' ng-controller='ServiceController'>
+  <body unresolved>
     <template is='dom-bind'>
       <paper-header-panel class="flex">
         <paper-toolbar >
           <paper-tabs id="tabs" selected="{{selected}}" self-end>
-            <paper-tab name="Overview">Overview</paper-tab>
             <paper-tab name="Description">Description</paper-tab>
             <paper-tab name="Characters">Characters</paper-tab>
             <paper-tab name="Locations">Locations</paper-tab>
@@ -98,30 +98,24 @@
           </paper-tabs>
         </paper-toolbar>
       </paper-header-panel>
+      <byutv-jsonp
+      		auto
+      		url="http://www.giantbomb.com/api/game/3030-27715/"
+      		params='{"api_key":"d2029bb22bd98ac08b54d148a4047617b22d3633","format":"jsonp"}'
+      		callback-key="json_callback"
+      		last-response="{{data}}"
+      		debounce-duration="300"></byutv-jsonp>
 
       <div class="container" layout end-justified center>
         <paper-material elevation="2">
-          <h1 ng-bind='data.name'></h1>
+          <h1 ng-bind='data.name'>{{data.results.name}}</h1>
         </paper-material>
       </div>
 
       <iron-pages selected="{{selected}}">
         <div class="container" layout end-justified center>
-          <paper-card heading="Short Description">
-            <div class="card-content" ng-bind="data.deck"></div>
-          </paper-card>
-          <paper-card heading="Developer">
-            <div class="card-content" ng-bind="data.developers[0].name"></div>
-          </paper-card>
-          <paper-card heading="Platforms">
-            <ul>
-              <li ng-repeat="platform in data.platforms" class="card-content" ng-bind="platform.name"></li>
-            </ul>
-          </paper-card>
-        </div>
-        <div class="container" layout end-justified center>
           <paper-material elevation="1" id='description'>
-            <div ng-bind-html='data.description'></div>
+            <div id="description">{{data.results.description}}</div>
           </paper-material>
         </div>
         <div>Page Three</div>
@@ -137,14 +131,14 @@
       });
     </script>
 
-    <script src='../bower_components/angular/angular.js'></script>
-    <script src='../bower_components/angular-sanitize/angular-sanitize.js'></script>
+    <!-- <script src='../bower_components/angular/angular.js'></script>
+    <script src='../bower_components/angular-sanitize/angular-sanitize.js'></script> -->
     <!-- bower:js -->
     <script src='../bower_components/webcomponentsjs/webcomponents.js'></script>
     <script src='../bower_components/promise-polyfill/Promise.js'></script>
     <script src='../bower_components/marked/lib/marked.js'></script>
     <script src='../bower_components/prism/prism.js'></script>
     <!-- endbower -->
-    <script src='../dist/js/app.js'></script>
+    <!-- <script src='../dist/js/app.js'></script> -->
   </body>
 </html>
