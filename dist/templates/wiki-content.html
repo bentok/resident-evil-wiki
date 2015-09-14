@@ -1,0 +1,25 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module name="wiki-content">
+  <template>
+    <div>{{html}}</div>
+  </template>
+  <script>
+    Polymer({
+      is: "wiki-content",
+      properties: {
+          html: {
+              type: String,
+              observer: "dataChanged"
+          }
+      },
+      dataChanged: function() {
+        var htmlStr = this.html;
+        var htmlEle = document.createElement('div');
+        htmlEle.innerHTML = htmlStr;
+        this.innerHTML = htmlStr;
+      }
+
+    });
+  </script>
+</dom-module>

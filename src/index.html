@@ -15,6 +15,9 @@
     <link rel="import" href="../bower_components/paper-card/paper-card.html">
     <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
     <link rel="import" href="../bower_components/byutv-jsonp/byutv-jsonp.html">
+    <link rel="import" href="elements/wiki-heading/wiki-heading.html">
+    <link rel="import" href="elements/wiki-content/wiki-content.html">
+    <link rel="import" href="elements/description/description.html">
     <style>
       body {
         font-size: 14px;
@@ -98,24 +101,26 @@
           </paper-tabs>
         </paper-toolbar>
       </paper-header-panel>
+
       <byutv-jsonp
-      		auto
-      		url="http://www.giantbomb.com/api/game/3030-27715/"
-      		params='{"api_key":"d2029bb22bd98ac08b54d148a4047617b22d3633","format":"jsonp"}'
-      		callback-key="json_callback"
-      		last-response="{{data}}"
-      		debounce-duration="300"></byutv-jsonp>
+    		auto
+    		url="http://www.giantbomb.com/api/game/3030-27715/"
+    		params='{"api_key":"d2029bb22bd98ac08b54d148a4047617b22d3633","format":"jsonp"}'
+    		callback-key="json_callback"
+    		last-response="{{data}}"
+    		debounce-duration="300">
+      </byutv-jsonp>
 
       <div class="container" layout end-justified center>
         <paper-material elevation="2">
-          <h1 ng-bind='data.name'>{{data.results.name}}</h1>
+          <wiki-heading heading="{{data.results.name}}"></wiki-heading>
         </paper-material>
       </div>
 
       <iron-pages selected="{{selected}}">
         <div class="container" layout end-justified center>
           <paper-material elevation="1" id='description'>
-            <div id="description">{{data.results.description}}</div>
+            <wiki-description content="{{data.results.description}}"></wiki-description>
           </paper-material>
         </div>
         <div>Page Three</div>
@@ -131,14 +136,11 @@
       });
     </script>
 
-    <!-- <script src='../bower_components/angular/angular.js'></script>
-    <script src='../bower_components/angular-sanitize/angular-sanitize.js'></script> -->
     <!-- bower:js -->
     <script src='../bower_components/webcomponentsjs/webcomponents.js'></script>
     <script src='../bower_components/promise-polyfill/Promise.js'></script>
     <script src='../bower_components/marked/lib/marked.js'></script>
     <script src='../bower_components/prism/prism.js'></script>
     <!-- endbower -->
-    <!-- <script src='../dist/js/app.js'></script> -->
   </body>
 </html>

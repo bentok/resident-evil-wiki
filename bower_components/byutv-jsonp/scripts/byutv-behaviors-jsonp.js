@@ -107,7 +107,7 @@ Byutv.behaviors.Jsonp = {
 		/**
 		 * Specifies the JSONP wrapper function name and is the `callback-value` in the "{callback-key}={callback-value}" pair.
 		 *
-		 * Note: 
+		 * Note:
 		 * - The server will use this value to properly wrap JSONP request responses.
 		 * Change this to a static value when browser caching is desired (see `cache`).
 		 *
@@ -389,7 +389,7 @@ Byutv.behaviors.Jsonp = {
 
 	/**
 	 * A method to cleanup a request.
-	 * 
+	 *
 	 * @param {Request} request The request to cleanup.
 	 */
 	_cleanupRequest: function(request) {

@@ -1,0 +1,16 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../wiki-content/wiki-content.html">
+
+<dom-module name="wiki-description">
+  <template>
+    <wiki-content html="{{content}}"></wiki-content>
+  </template>
+  <script>
+    Polymer({
+      is: "wiki-description",
+      properties: {
+        content: String
+      }
+    });
+  </script>
+</dom-module>
