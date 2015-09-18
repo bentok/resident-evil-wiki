@@ -1,0 +1,24 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../wiki-content/wiki-content.html">
+
+<dom-module name="wiki-description">
+  <template>
+    <byutv-jsonp
+      auto
+      url={{content}}
+      params='{"api_key":"d2029bb22bd98ac08b54d148a4047617b22d3633","format":"jsonp"}'
+      callback-key="json_callback"
+      last-response="{{article}}"
+      debounce-duration="300">
+    </byutv-jsonp>
+    <wiki-content html="{{article.results.description}}"></wiki-content>
+  </template>
+  <script>
+    Polymer({
+      is: "wiki-description",
+      properties: {
+        content: String
+      }
+    });
+  </script>
+</dom-module>
