@@ -43,7 +43,7 @@
           <paper-tabs id="tabs" selected="{{selected}}" self-end>
             <paper-tab name="Description">Description</paper-tab>
             <paper-tab name="Characters">Characters</paper-tab>
-            <paper-tab name="Locations">Locations</paper-tab>
+            <!--<paper-tab name="Locations">Locations</paper-tab>-->
             <paper-tab name="Images">Images</paper-tab>
           </paper-tabs>
         </paper-toolbar>
@@ -78,14 +78,16 @@
             </template>
           </paper-material>
         </div>
-        <div class="container" layout end-justified center>
+        <!--<div class="container" layout end-justified center>
           <paper-material elevation="1">
             <template is="dom-repeat" items={{data.results.locations}} as="location">
               <h2>{{location.name}}</h2>
-              <wiki-description content="{{location.api_detail_url}}"></wiki-description>
+              <div class='loacation-data'>
+                <wiki-description content="{{location.api_detail_url}}"></wiki-description>
+              </div>
             </template>
           </paper-material>
-        </div>
+        </div>-->
         <div class="container" layout end-justified center>
           <paper-material elevation="1">
             <polymer-slide>

@@ -13,6 +13,10 @@ h2 {
 .container {
    width: 50%;
 }
+.container a {
+  color: #000;
+  cursor: default;
+}
 @media screen and (max-width: 700px) {
   .container {
     width: 90%;
